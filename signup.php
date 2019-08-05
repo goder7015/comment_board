@@ -34,5 +34,4 @@ if ($name != null && $password != null && $email != null && $phone != null && $b
     }
 }
 mysqli_close($con);
-echo ("註冊成功");
-header("Refresh:3;Location:http://localhost/hw/test1/tim/index.php");
+header("Location:http://localhost/hw/test1/tim/redirect.php");

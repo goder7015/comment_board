@@ -65,7 +65,7 @@
 										<input type="text" class="form-control" placeholder="email address" name="email" />
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control" placeholder="password" name="pwd" />
+										<input type="password" class="form-control" placeholder="password" name="password" />
 									</div>
 									<h3> </h3>
 									<button class="btn btn--radius-2 btn--blue" type="submit">Login</button>
