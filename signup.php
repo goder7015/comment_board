@@ -7,19 +7,17 @@ $con = mysqli_connect($db_server, $db_user, $db_password, $db_name);
 if (!$con) {
     die("can't connect");
 }
-//mysqli_query("SET NAMES utf8");
-//mysqli_select_db('user', $con);
 
+$email = $_POST['email'];
 $name = $_POST['name'];
 $password = $_POST['pwd'];
-$email = $_POST['email'];
 $phone = $_POST['phone'];
 $birthday = $_POST['birthday'];
 $favcolor = $_POST['favcolor'];
 $sex = $_POST['gender'];
 $color = $_POST['favcolor'];
-if ($name != null && $password != null && $email != null && $phone != null && $birthday != null && $favcolor != null && $sex) {
-    $sql_select = "SELECT name FROM member WHERE name = '$name'";
+if ($name != null && $password != null && $email != null && $phone != null && $birthday != null && $favcolor != null) {
+    $sql_select = "SELECT email FROM member WHERE email = '$email'";
     $ret = mysqli_query($con, $sql_select);
     if (!$ret) {
         printf("Error: %s\n", mysqli_error($con));

@@ -1,12 +1,6 @@
+<?php session_start(); ?>
 <?php
-$db_server = "localhost";
-$db_name = "user";
-$db_user = "root";
-$db_password = "123";
-$con = mysqli_connect($db_server, $db_user, $db_password, $db_name);
-if (!$con) {
-    die("can't connect");
-}
+include("connect.php");
 
 $name = $_POST['email'];
 $password = $_POST['password'];
@@ -17,5 +11,6 @@ if (mysqli_num_rows($sql_login) == "") {
     echo ("登入失敗");
     header("Location:http://localhost/hw/test1/tim/index.php");
 } else {
+    $_SESSION['name'] = $name;
     header("Location:http://localhost/hw/test1/tim/member.php");
 }
