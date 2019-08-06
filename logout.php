@@ -1,3 +1,4 @@
 <?php session_start(); ?>
 <?php
-unset($_SESSION['username']);
+unset($_SESSION['name']);
+header("Location:http://localhost/hw/test1/tim/index.php");

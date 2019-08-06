@@ -1,8 +1,5 @@
-<?php session_start(); ?>
-<?php
-include("connect.php");
+<?php //session_start(); 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,102 +55,50 @@ include("connect.php");
             </div>
         </aside> <!-- END COLORLIB-ASIDE -->
         <div id="colorlib-main">
-            <div class="hero-wrap js-fullheight" style="background-image: url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
-                <div class="overlay"></div>
-                <div class="js-fullheight d-flex justify-content-center align-items-center">
-                    <div class="col-md-8 text text-center">
-                        <div class="img mb-4" style="background-image: url(images/noname.jpg);"></div>
-                        <div class="desc">
 
-                            <h1 class="mb-4">
+            <section class="ftco-section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="#" class="img img-2" style="background-image: url(images/gray.jpg);"></a>
+                        <div class="text text-2 pt-2 mt-3">
+                            <h2 class="mb-4">
+                                <table width="1200">
+                                    <tr>
+                                        <td>姓名</td>
+                                        <td>性別</td>
+                                        <td>電話</td>
+                                        <td>信箱</td>
+                                        <td>生日</td>
+                                    </tr>
 
-                                <?php
-                                include("connect.php");
-                                if ($_SESSION['name'] != null) {
-                                    $id = $_SESSION['name'];
-                                    $sql = "SELECT * FROM `member` where email = '$id'";
+                                    <?php
+                                    include("connect.php");
+                                    $sql = "SELECT * FROM `member`";
                                     $result = mysqli_query($con, $sql);
-                                    if (!$result) {
-                                        echo ("Error: " . mysqli_error($con));
-                                        exit();
-                                    }
-                                    if (mysqli_num_rows($result) > 0) {
-                                        if ($row = mysqli_fetch_row($result)) {
-                                            echo $row[1];
-                                        }
-                                    }
-                                } else {
-                                    echo 'somewhere goes wrong.';
-                                }
+                                    for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
+                                        $rs = mysqli_fetch_row($result);
+                                        ?><tr>
+                                            <td><?php echo $rs[1] ?></td>
+                                            <td><?php if ($rs[4] == 1) {
+                                                    echo "男";
+                                                } else echo "女"; ?></td>
+                                            <td><?php echo $rs[3] ?></td>
+                                            <td><?php echo $rs[0] ?></td>
+                                            <td><?php echo $rs[6] ?></td>
+                                        </tr>
+                                    <?php } ?>
 
-                                ?></h1>
-                            <h1 class="mb-4"><?php
-                                                include("connect.php");
-                                                if ($_SESSION['name'] != null) {
-                                                    $id = $_SESSION['name'];
-                                                    $sql = "SELECT * FROM `member` where email = '$id'";
-                                                    $result = mysqli_query($con, $sql);
-                                                    if (!$result) {
-                                                        echo ("Error: " . mysqli_error($con));
-                                                        exit();
-                                                    }
-                                                    if (mysqli_num_rows($result) > 0) {
-                                                        if ($row = mysqli_fetch_row($result)) {
-                                                            echo "+886 ", $row[3];
-                                                        }
-                                                    }
-                                                } else {
-                                                    echo 'somewhere goes wrong.';
-                                                }
 
-                                                ?></h1>
+                                </table>
+                            </h2>
                         </div>
                     </div>
                 </div>
-            </div>
-            <section class="ftco-section">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="blog-entry ftco-animate">
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-entry ftco-animate">
-                            <form class="register-form" method="post" action="list.php">
-                                <button class="btn btn--radius-2 btn--blue" type="submit">Member List</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-entry ftco-animate">
-                            <form class="register-form" method="post" action="avatar.php">
-                                <button class="btn btn--radius-2 btn--blue" type="submit">Update Avatar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="ftco-section">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="blog-entry ftco-animate">
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-entry ftco-animate">
-                            <form class="register-form" method="post" action="upload.php">
-                                <button class="btn btn--radius-2 btn--blue" type="submit">Upload Files</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-entry ftco-animate">
-                            <form class="register-form" method="post" action="download.php">
-                                <button class="btn btn--radius-2 btn--blue" type="submit">Download Files</button>
-                            </form>
-                        </div>
+                <div class="col-md-4">
+                    <div class="blog-entry ftco-animate">
+                        <form class="register-form" method="post" action="member.php">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Your Profile</button>
+                        </form>
                     </div>
                 </div>
             </section>

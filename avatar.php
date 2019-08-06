@@ -1,4 +1,3 @@
-<meta http-equiv="refresh" content="3;url=http://localhost/hw/test1/tim/index.php">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +38,7 @@
             <nav id="colorlib-main-menu" role="navigation">
                 <ul>
                     <li class="colorlib-active"><a href="index.php">Home</a></li>
+                    <li class="colorlib-active"><a href="member.php">Member</a></li>
                 </ul>
             </nav>
 
@@ -57,8 +57,15 @@
                     <div class="col-md-8 text text-center">
                         <div class="desc">
                             <h2 class="mb-4">
-                                Register Successfully, plz wait for 3 seconds and let fairy
-                                bring you back to my page.
+                                <form action="doAction.php" method="post" enctype="multipart/form-data">
+                                    <!-- 限制上傳檔案的最大值 -->
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+
+                                    <!-- accept 限制上傳檔案類型 -->
+                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                    <input type="file" name="myFile" id="imgre" accept="image/jpeg,image/jpg,image/png">
+                                    <button class="btn btn--radius-2 btn--blue" type="submit">Update Avatar</button>
+                                </form>
                             </h2>
                         </div>
                     </div>

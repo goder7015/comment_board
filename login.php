@@ -1,3 +1,8 @@
+<?php session_start();
+if ($_SESSION != null) {
+	header("Location:http://localhost/hw/test1/tim/member.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
